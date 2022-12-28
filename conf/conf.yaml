@@ -1,0 +1,12 @@
+nacos_path: false
+mysql:
+  ip: 127.0.0.1
+  port: 3306
+  user: root
+  password: password
+
+mongodb:
+  ip: 127.0.0.1
+  port: 27101
+  user: admin
+  password: admin

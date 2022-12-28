@@ -1,0 +1,22 @@
+# 使用：nohup ./coyote -c go_test.yaml -out go_test.html -timeout 20m &
+- name: set-up test
+  entries:
+    - name: set-up
+      command: pwd
+- name: go init test
+  entries:
+    - name: go init test
+      command: go test -v /Users/greyhead/Documents/Go/godemo/internal/go_test/init_test.go
+      stdout_not_has: [ 'Fail' ] # 判断返回是否包含
+
+- name: cplus build
+  entries:
+    - name: cplus build
+      command: sh /Users/greyhead/Documents/Go/godemo/cplus_test/build.sh
+      stdout_not_has: [ 'Fail' ] # 判断返回是否包含
+
+- name: cplus test
+  entries:
+    - name: cplus test
+      command: /Users/greyhead/Documents/Go/godemo/cplus_test/test
+      stdout_not_has: [ 'Fail' ] # 判断返回是否包含

@@ -1,0 +1,1 @@
+g++ -Wall -std=c++11 test.cpp -lgtest -lgtest_main    -lpthread -o test
