@@ -13,4 +13,4 @@ mongodb:
 
 dingding:
     group_name: doge_group
-    web_hook: doge
+    web_hook: xxx

@@ -7,7 +7,7 @@ import (
 	"strconv"
 	logger "godemo/utils/logger"
 	// db "godemo/internal/db"
-	dd "godemo/lib/dingding"
+	dd "godemo/internal/dingding"
 
 )
 
@@ -59,8 +59,8 @@ var scriptsCmd = &cobra.Command{
 			case  "apt":
 				logger.Logger.Println("apt")
 			default:
-				logger.Logger.Println("dingding sendPrice:BTC")
-				dd.SendBTCPrice()
+				logger.Logger.Println("dingding sendPrice")
+				dd.SendPrice()
 			}
 		case "env":
 			break
