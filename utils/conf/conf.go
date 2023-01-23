@@ -31,9 +31,35 @@ func (c *GoTestConf) GetConf(path string) *GoTestConf {
 	return c
 }
 
+type DingDingConf struct {
+	Group struct {
+		GroupName string `yaml:"group_name"`
+		WebHook string `yaml:"web_hook"`
+	}
+
+}
+
+
+func (c *DingDingConf) GetDingDingConf(path string) *DingDingConf {
+	
+	yamlFile, err := ioutil.ReadFile(path)
+	if err != nil {
+		fmt.Println(err.Error())
+	}
+	err = yaml.Unmarshal(yamlFile, c)
+	if err != nil {
+		fmt.Println(err.Error())
+	}
+	return c
+}
+
 func ViperGetConf( key string)  interface{}{
-	project_path := oscmd.GetProjectPath()
-	conf_path := project_path + "/conf/"
+	project_path := oscmd.GetLocalDirPath()
+	// Linux
+	//conf_path := project_path + "godemo/conf/"
+	// Windows
+	conf_path := project_path + "godemo\\conf\\"
+
 	viper.Set("fileDir",conf_path)
 	viper.SetConfigName("conf")
 	viper.SetConfigType("yaml")

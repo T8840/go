@@ -18,7 +18,7 @@ func GetProjectPath() string {
 
 func GetLocalDirPath() string {
 	dir, _ := os.Getwd()
-	comma := strings.Index(dir, "dtssdkdemo-golang")
+	comma := strings.Index(dir, "godemo")
 	local_dir_path := dir[:comma]
 	return local_dir_path
 }

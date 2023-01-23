@@ -3,11 +3,16 @@ package dingding
 import (
 	"fmt"
 	ddMsg "godemo/lib/dingding/dingdingNotification"
+	conf "godemo/utils/conf"
 )
 
-var WEB_HOOK = ""
+
 
 func SendBTCPrice(){
+	c := conf.ViperGetConf("dingding")
+	group := c.(map[string]interface{})  
+	WEB_HOOK := group["web_hook"].(string)
+
 	/*
 	//text 格式发送，注意关键词
 	send_text := ddMsg.DingMSG_text("BTPrice: 230000", true)
