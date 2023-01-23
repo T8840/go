@@ -7,6 +7,7 @@ import (
 	"strconv"
 	logger "godemo/utils/logger"
 	// db "godemo/internal/db"
+	dd "godemo/lib/dingding"
 
 )
 
@@ -22,9 +23,11 @@ var scriptsCmd = &cobra.Command{
 	Long: ` command for common tools:
 	1、./goctl t -h
 	2、./goctl t -t db -n mysql
-		-t: 工具类型 db/b/conf
+		-t: 工具类型 db/dingding/conf
 			db: db工具类型
-		-i:	mysql/mongo
+				-n:	mysql/mongo
+			dingding: dingding工具类型
+				-n: btc/apt/doge
 	`,
 	PreRun: func(cmd *cobra.Command, args []string) {
 		fmt.Println("pid:",os.Getpid())
@@ -47,12 +50,25 @@ var scriptsCmd = &cobra.Command{
 			default:
 				fmt.Println("conf")
 			}
-
+		case "dd","dingding":
+			logger.Logger.Println("---Use dingding Tools---")
+			switch type_name {
+			case  "doge":
+				logger.Logger.Println("doge")
+				break
+			case  "apt":
+				logger.Logger.Println("apt")
+			default:
+				logger.Logger.Println("dingding sendPrice:BTC")
+				dd.SendBTCPrice()
+			}
 		case "env":
 			break
+		
 		default:
 			fmt.Printf("请输入合适的tool类型：log_tool/blade/conf/env_check/")
-		}
+		
+	}
 
 	},
 }
